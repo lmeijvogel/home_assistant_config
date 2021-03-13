@@ -50,10 +50,15 @@ def get_next_scene_for_main_button(time_description, scene_value_id, current_sce
             default_scene = "scene.night"
         elif time_description == "morning":
             default_scene = "scene.morning"
+        elif time_description == "afternoon":
+            transitions = {
+                "scene.kitchen_bright": "scene.evening"
+            }
+
+            default_scene = "scene.kitchen_bright"
         elif time_description == "evening":
             transitions = {
-                "scene.evening": "scene.dimmed",
-                "scene.dimmed": "scene.evening"
+                "scene.evening": "scene.dimmed"
             }
 
             default_scene = "scene.evening"
@@ -75,6 +80,8 @@ def get_next_scene_for_kitchen_button(time_description, scene_value_id, current_
         on_scene = "scene.night"
     elif time_description == "morning":
         on_scene = "scene.morning"
+    elif time_description == "afternoon":
+        on_scene = "scene.kitchen_bright"
     elif time_description == "evening":
         on_scene = "scene.evening"
 
@@ -90,6 +97,8 @@ def get_time_description():
         return "night"
     elif time < datetime.time(14, 0):
         return "morning"
+    elif time < datetime.time(19, 30):
+        return "afternoon"
     elif time < datetime.time(23):
         return "evening"
     else:
