@@ -84,13 +84,13 @@ def get_next_scene_for_kitchen_button(time_description, scene_value_id, current_
         return off_scene
 
 def get_time_description():
-    now = datetime.datetime.now()
+    time = datetime.datetime.now().time()
 
-    if 0 <= now.hour and now.hour < 6:
+    if time < datetime.time(6, 0):
         return "night"
-    elif 6 <= now.hour and now.hour < 14:
+    elif time < datetime.time(14, 0):
         return "morning"
-    elif 14 <= now.hour and now.hour < 23:
+    elif time < datetime.time(23):
         return "evening"
     else:
         return "night"
