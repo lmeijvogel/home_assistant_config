@@ -1,0 +1,28 @@
+- id: '1615410297678'
+  alias: Light switch pressed
+  description: ''
+  trigger:
+  - platform: event
+    event_type: ozw.scene_activated
+    event_data: {}
+  condition: []
+  action:
+  - service: python_script.process_event
+    data:
+      trigger: '{{trigger}}'
+      node_id: '{{trigger.event.data.node_id}}'
+      scene_value_id: '{{trigger.event.data.scene_value_id}}'
+  mode: queued
+  max: 10
+- id: '1615498081439'
+  alias: Simulate button press
+  description: ''
+  trigger:
+  - platform: event
+    event_type: state_changed
+    event_data:
+      entity_id: input_boolean.simulate_button_press
+  condition: []
+  action:
+  - service: python_script.process_event
+  mode: single

@@ -1,0 +1,55 @@
+- id: '1615406437893'
+  name: Avond
+  entities:
+    switch.heatit_zdim_switch:
+      node_id: 11
+      friendly_name: 'Heatit ZDim: Switch'
+      state: 'on'
+    light.heatit_zdim_level:
+      brightness: 41
+      node_id: 11
+      friendly_name: 'Heatit ZDim: Level'
+      supported_features: 33
+      state: 'on'
+    light.multilevel_power_switch_instance_1_level:
+      brightness: 5
+      node_id: 10
+      friendly_name: 'FGD212 Dimmer 2: Instance 1: Level'
+      supported_features: 33
+      state: 'on'
+- id: '1615406525342'
+  name: Ochtend
+  entities:
+    light.multilevel_power_switch_instance_1_level:
+      brightness: 255
+      node_id: 10
+      friendly_name: 'FGD212 Dimmer 2: Instance 1: Level'
+      supported_features: 33
+      state: 'on'
+    switch.heatit_zdim_switch:
+      node_id: 11
+      friendly_name: 'Heatit ZDim: Switch'
+      state: 'on'
+    light.heatit_zdim_level:
+      brightness: 255
+      node_id: 11
+      friendly_name: 'Heatit ZDim: Level'
+      supported_features: 33
+      state: 'on'
+- id: '1615581480978'
+  name: Huiskamer uit
+  entities:
+    light.multilevel_power_switch_instance_1_level:
+      node_id: 10
+      friendly_name: Salontafel
+      supported_features: 33
+      state: 'off'
+    switch.heatit_zdim_switch:
+      node_id: 11
+      friendly_name: 'Heatit ZDim: Switch'
+      state: 'on'
+    light.heatit_zdim_level:
+      node_id: 11
+      friendly_name: Keuken
+      supported_features: 33
+      state: 'off'

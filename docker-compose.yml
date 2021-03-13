@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+    home-assistant:
+        network_mode: host
+        volumes:
+            - ./config:/config
+        image: homeassistant/home-assistant
+
+    mqtt:
+        image: eclipse-mosquitto
+        network_mode: host
+    ozwdaemon:
+        devices:
+            - /dev/ttyUSB0
+        volumes:
+            - './ozwdaemon/config:/opt/ozw/config'
+        network_mode: host
+        environment:
+            - MQTT_SERVER=127.0.0.1
+            - USB_PATH=/dev/ttyUSB0
+        image: 'openzwave/ozwdaemon:latest'
