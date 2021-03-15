@@ -1,7 +1,6 @@
 version: '3.3'
 services:
     home-assistant:
-        network_mode: host
         volumes:
             - ./config/home-assistant:/config
         image: homeassistant/home-assistant
@@ -10,13 +9,11 @@ services:
 
     mqtt:
         image: eclipse-mosquitto
-        network_mode: host
         volumes:
             - ./config/mqtt/config:/mosquitto/config
     ozwdaemon:
         volumes:
-        network_mode: host
             - './config/ozwdaemon/config:/opt/ozw/config'
         environment:
-            - MQTT_SERVER=127.0.0.1
+            - MQTT_SERVER=mqtt
         image: 'openzwave/ozwdaemon:latest'
