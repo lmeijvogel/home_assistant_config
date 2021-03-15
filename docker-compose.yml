@@ -3,19 +3,20 @@ services:
     home-assistant:
         network_mode: host
         volumes:
-            - ./config:/config
+            - ./config/home-assistant:/config
         image: homeassistant/home-assistant
+        ports:
+          - "8123:8123"
 
     mqtt:
         image: eclipse-mosquitto
         network_mode: host
-    ozwdaemon:
-        devices:
-            - /dev/ttyUSB0
         volumes:
-            - './ozwdaemon/config:/opt/ozw/config'
+            - ./config/mqtt/config:/mosquitto/config
+    ozwdaemon:
+        volumes:
         network_mode: host
+            - './config/ozwdaemon/config:/opt/ozw/config'
         environment:
             - MQTT_SERVER=127.0.0.1
-            - USB_PATH=/dev/ttyUSB0
         image: 'openzwave/ozwdaemon:latest'

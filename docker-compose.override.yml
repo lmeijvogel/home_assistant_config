@@ -1,0 +1,7 @@
+version: '3.3'
+services:
+    ozwdaemon:
+        environment:
+            - USB_PATH=/dev/ttyUSB0
+        devices:
+            - "/dev/ttyUSB0"
